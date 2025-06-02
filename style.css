@@ -1,0 +1,262 @@
+:root {
+  --salmão: #fddede;
+  --lavanda: #e8e6f6;
+  --azul-claro: #d9ecf2;
+  --offwhite: #fefefe;
+  --cinza-texto: #444;
+  --roxo-suave: #bba8e3;
+  --roxo-hover: #9e8ccf;
+  --azul-hover: #b9dce6;
+}
+
+body {
+  background-color: var(--offwhite);
+  color: var(--cinza-texto);
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  color: #333;
+}
+
+.text-muted {
+  font-size: 0.9rem;
+  color: #777 !important;
+}
+
+/* CARD PADRÃO */
+.card {
+  background-color: var(--lavanda);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  background-color: #f3e8ff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.card-body {
+  padding: 1.4rem 1.6rem;
+  background-color: var(--offwhite);
+}
+
+/* BOTÕES */
+.btn-primary {
+  background-color: var(--roxo-suave);
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--roxo-hover);
+  outline: none;
+}
+
+.btn-secondary {
+  background-color: var(--azul-claro);
+  border: none;
+  color: #333;
+  font-weight: 500;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--azul-hover);
+  outline: none;
+}
+
+/* CAMPOS DE FORMULÁRIO */
+input,
+textarea,
+select {
+  border-radius: 10px !important;
+}
+
+.form-control:focus {
+  border-color: var(--roxo-suave);
+  box-shadow: 0 0 0 0.2rem rgba(187, 168, 227, 0.25);
+  outline: none;
+}
+
+/* PERFIL */
+.perfil-box {
+  background-color: var(--salmão);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* AVALIAÇÕES */
+.avaliacao {
+  background-color: var(--azul-claro);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* RODAPÉ */
+footer {
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6c757d;
+  border-top: 1px solid #dee2e6;
+  margin-top: auto;
+}
+:root {
+  --salmão: #fddede;
+  --lavanda: #e8e6f6;
+  --azul-claro: #d9ecf2;
+  --offwhite: #fefefe;
+  --cinza-texto: #444;
+  --roxo-suave: #bba8e3;
+  --roxo-hover: #9e8ccf;
+  --azul-hover: #b9dce6;
+}
+
+body {
+  background-color: var(--offwhite);
+  color: var(--cinza-texto);
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  color: #333;
+}
+
+.text-muted {
+  font-size: 0.9rem;
+  color: #777 !important;
+}
+
+/* CARD PADRÃO */
+.card {
+  background-color: var(--lavanda);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  background-color: #f3e8ff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.card-body {
+  padding: 1.4rem 1.6rem;
+  background-color: var(--offwhite);
+}
+
+/* BOTÕES */
+.btn-primary {
+  background-color: var(--roxo-suave);
+  border: none;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--roxo-hover);
+  outline: none;
+}
+
+.btn-secondary {
+  background-color: var(--azul-claro);
+  border: none;
+  color: #333;
+  font-weight: 500;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: var(--azul-hover);
+  outline: none;
+}
+
+/* CAMPOS DE FORMULÁRIO */
+input,
+textarea,
+select {
+  border-radius: 10px !important;
+}
+
+.form-control:focus {
+  border-color: var(--roxo-suave);
+  box-shadow: 0 0 0 0.2rem rgba(187, 168, 227, 0.25);
+  outline: none;
+}
+
+/* PERFIL */
+.perfil-box {
+  background-color: var(--salmão);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* AVALIAÇÕES */
+.avaliacao {
+  background-color: var(--azul-claro);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* RODAPÉ */
+footer {
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6c757d;
+  border-top: 1px solid #dee2e6;
+  margin-top: auto;
+}

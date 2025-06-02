@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ELAs - Serviços por Mulheres</title>
+  <link rel="icon" href="logo/logo 3.png">
+  <meta name="description" content="Encontre serviços oferecidos por mulheres em diversas áreas: beleza, saúde, educação e muito mais. Plataforma feita por e para mulheres." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    body {
+      background-color: #fefefe;
+      font-family: 'Segoe UI', sans-serif;
+      padding-top: 70px;
+    }
+    nav.navbar {
+      background-color: #ffe4e1;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1030;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      color: #4a4a4a;
+      font-size: 1.5rem;
+    }
+    .btn-lavanda {
+      background-color: #e6e6fa;
+      color: #333;
+      font-weight: 600;
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .btn-lavanda:hover {
+      background-color: #dcd0ff;
+    }
+    .hero {
+      background-color: #ffe4e1;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+    }
+    .hero img {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+    .beneficios, .numeros, .faq {
+      padding: 4rem 1rem;
+    }
+    .beneficio, .depoimento-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .depoimento-card {
+      max-width: 320px;
+      margin: 1rem auto;
+    }
+    footer {
+      background-color: #f1f1f1;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    footer a {
+      color: #b48fc6;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    .btn-ajuda {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    /* Cards dos profissionais */
+    .profissional-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-light px-4">
+    <img src="logo/logo 2.png" alt="Mulheres unidas" width="65" height="auto" />
+ 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item me-3">
+          <a href="cadastro.html" class="btn btn-lavanda">Cadastrar</a>
+        </li>
+        <li class="nav-item">
+          <a href="profissionais.html" class="btn btn-outline-secondary">Ver Profissionais</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <img src="logo/logo 3.png" alt="Mulheres unidas" width="300" height="auto" />
+    <h1>Encontre serviços oferecidos por mulheres</h1>
+    <p class="lead">Beleza, educação, saúde, consultoria e muito mais — tudo em um só lugar.</p>
+    <a href="#buscaProfissionais" class="btn btn-lavanda btn-lg mt-3">Começar a buscar</a>
+  </section>
+
+  <section id="buscaProfissionais" class="bg-white">
+    <div class="container py-5 text-center">
+      <h2 class="mb-3">Busque por uma profissional</h2>
+      <form id="formBusca" class="d-flex justify-content-center" role="search" onsubmit="event.preventDefault(); filtrarProfissionais();">
+        <input id="inputEspecialidade" class="form-control w-50 me-2 rounded-pill shadow-sm" type="search" placeholder="Ex: manicure, TI, cuidadora" aria-label="Buscar especialidade">
+        <input id="inputLocalizacao" class="form-control w-25 me-2 rounded-pill shadow-sm" type="search" placeholder="Ex: Salvador, SP" aria-label="Buscar localização">
+        <button class="btn btn-lavanda rounded-pill" type="submit">Buscar</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="container py-5">
+    <h2 class="text-center mb-4">Profissionais Disponíveis</h2>
+    <div id="listaProfissionais" class="row gy-4">
+      <!-- Cards inseridos via JS -->
+    </div>
+    <p id="msgSemResultados" class="text-center mt-4" style="display:none;">Nenhuma profissional encontrada.</p>
+  </section>
+
+  <section class="beneficios bg-light">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="beneficio">
+            <i class="bi bi-heart display-5 text-muted"></i>
+            <h5>Confiança e Cuidado</h5>
+            <p>Profissionais selecionadas com foco em empatia e respeito.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="beneficio">
+            <i class="bi bi-person-vcard display-5 text-muted"></i>
+            <h5>Variedade de Áreas</h5>
+            <p>Desde saúde até design — encontre o serviço que você procura.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="beneficio">
+            <i class="bi bi-phone display-5 text-muted"></i>
+            <h5>Fácil e Rápido</h5>
+            <p>Use pelo celular ou computador sem complicações.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="numeros bg-white text-center">
+    <div class="container">
+      <h2 class="mb-4">Nosso Impacto</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <h3 style="color:#b48fc6;">+500</h3>
+          <p>Profissionais cadastradas</p>
+        </div>
+        <div class="col-md-4">
+          <h3 style="color:#b48fc6;">+1.200</h3>
+          <p>Clientes atendidas</p>
+        </div>
+        <div class="col-md-4">
+          <h3 style="color:#b48fc6;">98%</h3>
+          <p>Avaliações positivas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <section class="momentos bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Momentos ELAs</h2>
+    <div id="carouselMomentos" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner rounded shadow-sm" style="height: 700px;">
+        <div class="carousel-item active">
+          <img src="img/momento-elas 1.jfif" class="d-block w-100" alt="Profissional 1" style="height: 700px; object-fit: cover; border-radius: 10px;">
+        </div>
+        <div class="carousel-item">
+          <img src="img/momento-elas 2.jfif" class="d-block w-100" alt="Profissional 2" style="height: 700px; object-fit: cover; border-radius: 10px;">
+        </div>
+        <div class="carousel-item">
+          <img src="img/momento-elas 3.jfif" class="d-block w-100" alt="Profissional 3" style="height: 700px; object-fit: cover; border-radius: 10px;">
+        </div>
+        <div class="carousel-item">
+          <img src="img/momento-elas 4.jfif" class="d-block w-100" alt="Profissional 4" style="height: 700px; object-fit: cover; border-radius: 10px;">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselMomentos" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselMomentos" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+  <section class="faq bg-white">
+    <div class="container">
+      <h2 class="text-center mb-4">Perguntas Frequentes</h2>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Como faço para contratar uma profissional?</button>
+          </h2>
+          <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Acesse a página de profissionais, escolha uma e entre em contato diretamente pelo email ou telefone informado.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">Posso me cadastrar gratuitamente?</button>
+          </h2>
+          <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Sim! O cadastro é 100% gratuito e voltado exclusivamente para mulheres.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="depoimentos text-center">
+    <div class="container">
+      <h2 class="mb-4">O que dizem sobre nós</h2>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <div class="depoimento-card">
+          <p class="depoimento-texto">“Encontrei profissionais incríveis, atenciosas e qualificadas. Recomendo muito!”</p>
+          <div class="depoimento-autor">— Ana P.</div>
+        </div>
+        <div class="depoimento-card">
+          <p class="depoimento-texto">“A plataforma é muito fácil de usar e me ajudou a encontrar serviços confiáveis rapidamente.”</p>
+          <div class="depoimento-autor">— Juliana S.</div>
+        </div>
+        <div class="depoimento-card">
+          <p class="depoimento-texto">“Adoro que é um espaço dedicado só para mulheres, me sinto mais segura.”</p>
+          <div class="depoimento-autor">— Marcela T.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <footer>
+    <div>© 2025 ELAs — Feito com 💜 por e para mulheres</div>
+    <div>
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+      <a href="#"><i class="bi bi-twitter"></i></a>
+    </div>
+  </footer>
+
+  <button class="btn btn-lavanda btn-ajuda" title="Ajuda" onclick="window.location.href='ajuda.html'">
+  <i class="bi bi-question-circle"></i>
+</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const profissionais = [
+      {
+        nome: "Ana Silva",
+        especialidade: "Serviços Gerais",
+        localizacao: "Rio de Janeiro - RJ",
+        contato: "ana.silva@email.com",
+        foto: "img/ana-silva.jfif"
+      },
+      {
+        nome: "Beatriz Lima",
+        especialidade: "Cuidadora de Crianças",
+        localizacao: "Curitiba - PR",
+        contato: "beatriz.cuidadora@gmail.com",
+        foto: "img/beatriz-lima.jfif"
+      },
+      {
+        nome: "Clara Souza",
+        especialidade: "Cuidadora de Idosos",
+        localizacao: "Fortaleza - CE",
+        contato: "clara.idosos@email.com",
+        foto: "img/clara-souza.jfif"
+      },
+      {
+        nome: "Daniela Costa",
+        especialidade: "TI",
+        localizacao: "Belo Horizonte - MG",
+        contato: "daniela.ti@gmail.com",
+        foto: "img/daniela-costa.jfif"
+      },
+      {
+        nome: "Elisa Martins",
+        especialidade: "Personal Trainer",
+        localizacao: "São Paulo - SP",
+        contato: "elisa.pt@email.com",
+        foto: "img/elisa-martins.jfif"
+      }
+    ];
+
+    const listaProfissionais = document.getElementById("listaProfissionais");
+    const msgSemResultados = document.getElementById("msgSemResultados");
+
+    function criarCard(profissional) {
+      const col = document.createElement("div");
+      col.className = "col-md-4";
+
+      const card = document.createElement("div");
+      card.className = "profissional-card shadow-sm p-3 rounded";
+
+      const img = document.createElement("img");
+      img.src = profissional.foto;
+      img.alt = profissional.nome;
+      img.className = "rounded-circle mx-auto d-block mb-3";
+      img.style.width = "120px";
+      img.style.height = "120px";
+      img.style.objectFit = "cover";
+
+      const nome = document.createElement("h5");
+      nome.textContent = profissional.nome;
+      nome.className = "text-center";
+
+      const especialidade = document.createElement("p");
+      especialidade.textContent = profissional.especialidade;
+      especialidade.className = "text-center text-muted";
+
+      const localizacao = document.createElement("p");
+      localizacao.textContent = profissional.localizacao;
+      localizacao.className = "text-center text-muted";
+
+      const contato = document.createElement("p");
+      contato.innerHTML = `<strong>Contato:</strong> <a href="mailto:${profissional.contato}">${profissional.contato}</a>`;
+      contato.className = "text-center small mt-2";
+
+      card.appendChild(img);
+      card.appendChild(nome);
+      card.appendChild(especialidade);
+      card.appendChild(localizacao);
+      card.appendChild(contato);
+
+      col.appendChild(card);
+      return col;
+    }
+
+    function exibirProfissionais(lista) {
+      listaProfissionais.innerHTML = "";
+      if (lista.length === 0) {
+        msgSemResultados.style.display = "block";
+      } else {
+        msgSemResultados.style.display = "none";
+        lista.forEach(prof => {
+          listaProfissionais.appendChild(criarCard(prof));
+        });
+      }
+    }
+
+    function filtrarProfissionais() {
+      const filtroEspecialidade = document.getElementById("inputEspecialidade").value.toLowerCase().trim();
+      const filtroLocalizacao = document.getElementById("inputLocalizacao").value.toLowerCase().trim();
+
+      const filtrados = profissionais.filter(prof => {
+        const especialidadeMatch = prof.especialidade.toLowerCase().includes(filtroEspecialidade);
+        const localizacaoMatch = prof.localizacao.toLowerCase().includes(filtroLocalizacao);
+        return especialidadeMatch && localizacaoMatch;
+      });
+
+      exibirProfissionais(filtrados);
+    }
+
+    // Exibe todas as profissionais ao carregar a página
+    exibirProfissionais(profissionais);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
