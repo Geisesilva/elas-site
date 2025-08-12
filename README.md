@@ -9,4 +9,4 @@ A ideia deste site é ser um portal para mulheres que querem ingressar no mercad
 O site é feito para que as usuarias possa se cadastrar é assim dentro dele criar um perfil para ofertar seu trabalo.
 Ex: uma maquiadora, ela se cadastra, cria seu perfil e adiciona seus dados de contato, o contratante enrta em contato com ela e assim a contrata pelo site/aplicativo.
 
-O projeto já foi registrado pela idealizadora da ideia, está é apenas uma amostra do que ele vai ser um dia 
+O projeto já foi registrado pela idealizadora dele, está é apenas uma amostra do que ele vai ser um dia. 
