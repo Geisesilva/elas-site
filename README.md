@@ -1,5 +1,5 @@
 # elas-site
-um projeto criado com algumas amigas e um pouco de sorte ☺️🍃.
+Um projeto criado com algumas amigas e um pouco de sorte ☺️🍃.
 
 
 Esse projeto é apenas uma demonstração de um site idealizado por uma amiga e posto em minhas mãos para desenvolvê-lo, mas fiz apenas usando html e csspara ser uma demonstraçaõ.
